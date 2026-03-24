@@ -1,58 +1,153 @@
 # Crehana Claude Marketplace
 
-Claude Code plugins for Crehana development workflows.
+Claude Code plugins para los flujos de desarrollo de Crehana.
 
-## Available Plugins
+## Plugins disponibles
 
 | Plugin | Contenido | Para quién |
 |---|---|---|
-| `centralized-users-dev` | Skills: new-mutation, new-query, new-pubsub-handler, new-use-case, new-adapter, test-conventions. Agents: code-reviewer, python-test-engineer | Devs del microservicio centralized-users |
-| `general-skills` | Skill: explain-code | Cualquier dev del equipo |
-| `browser-testing` | MCP de Playwright para automatización de browser | Quien necesite testing de UI |
+| `centralized-users-dev` | 6 skills de scaffolding + 2 agents | Devs del microservicio `centralized-users` |
+| `general-skills` | Skill `explain-code` | Cualquier dev del equipo |
+| `browser-testing` | MCP de Playwright | Quien necesite automatización de browser |
+
+---
 
 ## Instalación
 
-### 1. Registrar el marketplace (una sola vez)
+### Requisitos previos
+
+- [Claude Code](https://claude.ai/code) instalado y con sesión activa
+- Para `browser-testing`: Node.js instalado (el MCP usa `npx`)
+
+### Paso 1 — Registrar el marketplace
+
+Ejecuta este comando **una sola vez** en Claude Code. Abre Claude Code y escribe:
 
 ```
 /plugin marketplace add <github-org>/crehana-claude-marketplace
 ```
 
-### 2. Instalar los plugins que necesitas
+> Reemplaza `<github-org>` con la organización o usuario de GitHub donde está el repo.
+> Ejemplo: `/plugin marketplace add crehana/crehana-claude-marketplace`
+
+Esto descarga el catálogo y lo deja disponible para instalar plugins desde él.
+
+### Paso 2 — Instalar los plugins que necesitas
+
+Instala solo los que vas a usar:
 
 ```
 /plugin install centralized-users-dev@crehana-claude-marketplace
+```
+```
 /plugin install general-skills@crehana-claude-marketplace
+```
+```
 /plugin install browser-testing@crehana-claude-marketplace
 ```
 
-## Uso
+Los plugins se instalan a nivel de **usuario** (disponibles en todos tus proyectos).
 
-### Skills disponibles (invocar con `/`)
+### Verificar la instalación
 
-| Skill | Cuándo se activa |
+Para confirmar que los plugins quedaron activos:
+
+```
+/plugin list
+```
+
+Deberías ver `centralized-users-dev`, `general-skills` y/o `browser-testing` en la lista.
+
+---
+
+## Qué incluye cada plugin
+
+### `centralized-users-dev`
+
+Skills de scaffolding para el microservicio `crehana-centralized-users`. Se activan automáticamente cuando describes lo que necesitas, o puedes invocarlas manualmente con `/`.
+
+| Skill | Se activa cuando... |
 |---|---|
-| `/new-mutation` | Crear una nueva GraphQL mutation en centralized-users |
-| `/new-query` | Crear una nueva GraphQL query en centralized-users |
-| `/new-pubsub-handler` | Crear un nuevo handler de PubSub |
-| `/new-use-case` | Crear un nuevo use case con patrón de compensación |
-| `/new-adapter` | Crear un adapter para Learning o Talent |
-| `/test-conventions` | Escribir tests siguiendo las convenciones del proyecto |
-| `/explain-code` | Explicar cómo funciona un bloque de código |
+| `/new-mutation` | Quieres crear una nueva GraphQL mutation |
+| `/new-query` | Quieres crear una nueva GraphQL query |
+| `/new-pubsub-handler` | Quieres agregar un handler de PubSub |
+| `/new-use-case` | Necesitas implementar un nuevo use case |
+| `/new-adapter` | Necesitas llamar a Learning o Talent API |
+| `/test-conventions` | Quieres escribir tests para cualquier componente |
 
-### Agents disponibles
+Agents incluidos (se activan automáticamente):
 
-- **code-reviewer**: Se activa automáticamente al pedir review de código, PRs o archivos. También puedes invocarlo explícitamente.
-- **python-test-engineer**: Se activa automáticamente cuando se escribe código Python significativo que necesita tests.
+- **`code-reviewer`** — revisa código, PRs y archivos contra las convenciones del proyecto. Se activa cuando pides review o después de escribir código significativo.
+- **`python-test-engineer`** — genera suites de tests completas. Se activa cuando se escribe código Python que necesita cobertura.
+
+### `general-skills`
+
+| Skill | Se activa cuando... |
+|---|---|
+| `/explain-code` | Preguntas cómo funciona un bloque de código |
+
+### `browser-testing`
+
+Instala el [MCP de Playwright](https://github.com/microsoft/playwright-mcp) de Microsoft. Permite a Claude navegar páginas, hacer clic, llenar formularios y tomar screenshots directamente.
+
+Una vez instalado, Claude tendrá acceso a herramientas como `browser_navigate`, `browser_click`, `browser_screenshot`, etc.
+
+---
 
 ## Actualizar plugins
 
+Cuando haya nuevas versiones disponibles:
+
 ```
 /plugin update centralized-users-dev@crehana-claude-marketplace
+/plugin update general-skills@crehana-claude-marketplace
+/plugin update browser-testing@crehana-claude-marketplace
 ```
+
+O para actualizar todos a la vez:
+
+```
+/plugin update --all
+```
+
+---
+
+## Desinstalar
+
+```
+/plugin uninstall centralized-users-dev@crehana-claude-marketplace
+```
+
+---
+
+## Estructura del repositorio
+
+```
+crehana-claude-marketplace/
+├── .claude-plugin/
+│   └── marketplace.json        # Catálogo de plugins
+├── skills/                     # Skills para centralized-users-dev y general-skills
+│   ├── new-mutation/
+│   ├── new-query/
+│   ├── new-pubsub-handler/
+│   ├── new-use-case/
+│   ├── new-adapter/
+│   ├── test-conventions/
+│   └── explain-code/
+├── agents/                     # Agents incluidos en centralized-users-dev
+│   ├── code-reviewer.md
+│   └── python-test-engineer.md
+└── plugins/
+    └── browser-testing/        # Plugin MCP independiente
+        ├── .claude-plugin/plugin.json
+        └── .mcp.json
+```
+
+---
 
 ## Contribuir
 
-1. Hacer cambios en `plugins/<plugin>/`
-2. Actualizar `version` en el `plugin.json` correspondiente
-3. Crear un PR con los cambios
+1. Crea una rama: `git checkout -b feature/mi-skill`
+2. Agrega o modifica archivos en `skills/` o `agents/`
+3. Si es una skill nueva, agrégala al array `skills` correspondiente en `.claude-plugin/marketplace.json`
+4. Abre un PR hacia `main`
