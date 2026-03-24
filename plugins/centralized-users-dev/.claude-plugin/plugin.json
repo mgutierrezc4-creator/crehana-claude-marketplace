@@ -1,8 +1,0 @@
-{
-  "name": "centralized-users-dev",
-  "description": "Complete development toolkit for centralized-users microservice. Includes scaffolding skills (mutations, queries, PubSub handlers, use cases, adapters), test conventions, a code reviewer agent, and a test engineer agent.",
-  "version": "1.0.0",
-  "author": {
-    "name": "Crehana Core Team"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "name": "browser-testing",
-  "description": "Playwright MCP integration for browser automation and testing.",
-  "version": "1.0.0",
-  "author": {
-    "name": "Crehana Core Team"
-  }
-}
