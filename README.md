@@ -19,6 +19,7 @@ Claude Code plugins para los flujos de desarrollo de Crehana.
 
 - [Claude Code](https://claude.ai/code) instalado y con sesión activa
 - Para `browser-testing`: **Node.js v18+** instalado (el MCP usa `npx`)
+- Para `centralized-users-dev` (agent `code-reviewer`): **[glab](https://gitlab.com/gitlab-org/cli)** instalado si quieres review de MRs desde GitLab
 
 #### Instalar Node.js según tu sistema operativo
 
@@ -26,7 +27,7 @@ Claude Code plugins para los flujos de desarrollo de Crehana.
 |---|---|
 | **macOS** | `brew install node` o descargar desde [nodejs.org](https://nodejs.org) |
 | **Linux** | `sudo apt install nodejs npm` (Ubuntu/Debian) · `sudo dnf install nodejs` (Fedora) · o usar [nvm](https://github.com/nvm-sh/nvm) |
-| **Windows** | Descargar el instalador `.msi` desde [nodejs.org](https://nodejs.org) (incluye `npx` automáticamente en el PATH) |
+| **Windows** | Descargar el instalador `.msi` desde [nodejs.org](https://nodejs.org) (incluye `npx` automáticamente en el PATH). Si `npx` no es reconocido, reinicia la terminal para que se actualice el PATH. |
 
 Verifica que Node.js está instalado correctamente:
 ```bash
@@ -184,4 +185,5 @@ crehana-claude-marketplace/
 1. Crea una rama: `git checkout -b feature/mi-skill`
 2. Agrega o modifica archivos en `skills/` o `agents/`
 3. Si es una skill nueva, agrégala al array `skills` correspondiente en `.claude-plugin/marketplace.json`
-4. Abre un PR hacia `main`
+4. Si es un agent nuevo, agrégalo al array `agents` del plugin correspondiente en `.claude-plugin/marketplace.json`
+5. Abre un PR hacia `main`

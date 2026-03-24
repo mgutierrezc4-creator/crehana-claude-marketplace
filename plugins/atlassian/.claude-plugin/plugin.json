@@ -1,6 +1,7 @@
 {
   "name": "atlassian",
-  "description": "Atlassian MCP server. Integra Jira y Confluence directamente en Claude Code: crear y editar issues, buscar tickets, gestionar páginas, agregar comentarios y más. Requiere autenticación OAuth con tu cuenta de Atlassian.",
+  "version": "1.1.0",
+  "description": "Atlassian MCP server for Jira and Confluence. Provides 31 tools for creating/editing issues, searching tickets, managing pages, adding comments, and more. Requires OAuth authentication with your Atlassian account.",
   "author": {
     "name": "Atlassian"
   }

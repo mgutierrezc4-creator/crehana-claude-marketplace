@@ -1,5 +1,6 @@
 {
   "name": "crehana-claude-marketplace",
+  "version": "1.1.0",
   "owner": {
     "name": "Crehana Core Team"
   },
@@ -19,6 +20,10 @@
         "./skills/new-use-case",
         "./skills/new-adapter",
         "./skills/test-conventions"
+      ],
+      "agents": [
+        "./agents/code-reviewer.md",
+        "./agents/python-test-engineer.md"
       ]
     },
     {
@@ -28,7 +33,8 @@
       "strict": false,
       "skills": [
         "./skills/explain-code"
-      ]
+      ],
+      "agents": []
     },
     {
       "name": "browser-testing",
@@ -37,7 +43,7 @@
     },
     {
       "name": "atlassian",
-      "description": "Atlassian MCP server para Jira y Confluence. Requiere autenticación OAuth.",
+      "description": "Atlassian MCP server for Jira and Confluence. Requires OAuth authentication.",
       "source": "./plugins/atlassian"
     }
   ]
