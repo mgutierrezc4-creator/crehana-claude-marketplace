@@ -6,7 +6,7 @@ Claude Code plugins for Crehana development workflows.
 
 | Plugin | Contenido | Para quién |
 |---|---|---|
-| `centralized-users-dev` | Skills: new-mutation, new-query, new-pubsub-handler, test-conventions. Agents: code-reviewer, python-test-engineer | Devs del microservicio centralized-users |
+| `centralized-users-dev` | Skills: new-mutation, new-query, new-pubsub-handler, new-use-case, new-adapter, test-conventions. Agents: code-reviewer, python-test-engineer | Devs del microservicio centralized-users |
 | `general-skills` | Skill: explain-code | Cualquier dev del equipo |
 | `browser-testing` | MCP de Playwright para automatización de browser | Quien necesite testing de UI |
 
@@ -35,6 +35,8 @@ Claude Code plugins for Crehana development workflows.
 | `/new-mutation` | Crear una nueva GraphQL mutation en centralized-users |
 | `/new-query` | Crear una nueva GraphQL query en centralized-users |
 | `/new-pubsub-handler` | Crear un nuevo handler de PubSub |
+| `/new-use-case` | Crear un nuevo use case con patrón de compensación |
+| `/new-adapter` | Crear un adapter para Learning o Talent |
 | `/test-conventions` | Escribir tests siguiendo las convenciones del proyecto |
 | `/explain-code` | Explicar cómo funciona un bloque de código |
 
