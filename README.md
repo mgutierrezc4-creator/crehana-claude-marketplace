@@ -18,7 +18,23 @@ Claude Code plugins para los flujos de desarrollo de Crehana.
 ### Requisitos previos
 
 - [Claude Code](https://claude.ai/code) instalado y con sesión activa
-- Para `browser-testing`: Node.js instalado (el MCP usa `npx`)
+- Para `browser-testing`: **Node.js v18+** instalado (el MCP usa `npx`)
+
+#### Instalar Node.js según tu sistema operativo
+
+| OS | Método recomendado |
+|---|---|
+| **macOS** | `brew install node` o descargar desde [nodejs.org](https://nodejs.org) |
+| **Linux** | `sudo apt install nodejs npm` (Ubuntu/Debian) · `sudo dnf install nodejs` (Fedora) · o usar [nvm](https://github.com/nvm-sh/nvm) |
+| **Windows** | Descargar el instalador `.msi` desde [nodejs.org](https://nodejs.org) (incluye `npx` automáticamente en el PATH) |
+
+Verifica que Node.js está instalado correctamente:
+```bash
+node --version   # debe mostrar v18 o superior
+npx --version
+```
+
+> El plugin `atlassian` no requiere Node.js — usa HTTP directamente.
 
 ### Paso 1 — Registrar el marketplace
 
