@@ -34,6 +34,11 @@
       "name": "browser-testing",
       "description": "Playwright MCP server for browser automation and end-to-end testing.",
       "source": "./plugins/browser-testing"
+    },
+    {
+      "name": "atlassian",
+      "description": "Atlassian MCP server para Jira y Confluence. Requiere autenticación OAuth.",
+      "source": "./plugins/atlassian"
     }
   ]
 }

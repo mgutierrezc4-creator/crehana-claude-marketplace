@@ -9,6 +9,7 @@ Claude Code plugins para los flujos de desarrollo de Crehana.
 | `centralized-users-dev` | 6 skills de scaffolding + 2 agents | Devs del microservicio `centralized-users` |
 | `general-skills` | Skill `explain-code` | Cualquier dev del equipo |
 | `browser-testing` | MCP de Playwright | Quien necesite automatización de browser |
+| `atlassian` | MCP de Jira + Confluence (OAuth) | Todo el equipo |
 
 ---
 
@@ -44,6 +45,9 @@ Instala solo los que vas a usar:
 ```
 ```
 /plugin install browser-testing@crehana-claude-marketplace
+```
+```
+/plugin install atlassian@crehana-claude-marketplace
 ```
 
 Los plugins se instalan a nivel de **usuario** (disponibles en todos tus proyectos).
@@ -92,6 +96,16 @@ Instala el [MCP de Playwright](https://github.com/microsoft/playwright-mcp) de M
 
 Una vez instalado, Claude tendrá acceso a herramientas como `browser_navigate`, `browser_click`, `browser_screenshot`, etc.
 
+### `atlassian`
+
+Instala el [MCP oficial de Atlassian](https://mcp.atlassian.com). Conecta Claude directamente con Jira y Confluence (31 herramientas disponibles).
+
+Lo que puedes hacer:
+- **Jira**: crear, editar y buscar issues, agregar comentarios y worklogs, transicionar tickets, vincular issues
+- **Confluence**: leer y crear páginas, buscar con CQL, agregar comentarios inline y de pie de página
+
+> **Requiere autenticación OAuth.** Al instalar el plugin, Claude Code abrirá una ventana en el browser para autenticarte con tu cuenta de Atlassian. Una vez autenticado, la sesión persiste automáticamente.
+
 ---
 
 ## Actualizar plugins
@@ -102,6 +116,7 @@ Cuando haya nuevas versiones disponibles:
 /plugin update centralized-users-dev@crehana-claude-marketplace
 /plugin update general-skills@crehana-claude-marketplace
 /plugin update browser-testing@crehana-claude-marketplace
+/plugin update atlassian@crehana-claude-marketplace
 ```
 
 O para actualizar todos a la vez:
@@ -138,7 +153,10 @@ crehana-claude-marketplace/
 │   ├── code-reviewer.md
 │   └── python-test-engineer.md
 └── plugins/
-    └── browser-testing/        # Plugin MCP independiente
+    ├── browser-testing/        # Plugin MCP: Playwright
+    │   ├── .claude-plugin/plugin.json
+    │   └── .mcp.json
+    └── atlassian/              # Plugin MCP: Jira + Confluence (OAuth)
         ├── .claude-plugin/plugin.json
         └── .mcp.json
 ```
