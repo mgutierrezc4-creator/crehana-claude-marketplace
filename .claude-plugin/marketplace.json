@@ -1,0 +1,29 @@
+{
+  "name": "crehana-claude-marketplace",
+  "owner": {
+    "name": "Crehana Core Team"
+  },
+  "metadata": {
+    "description": "Claude Code plugins for Crehana development workflows. Includes project-specific scaffolding skills, code review agents, and MCP integrations."
+  },
+  "plugins": [
+    {
+      "name": "centralized-users-dev",
+      "source": "./plugins/centralized-users-dev",
+      "description": "Skills and agents for centralized-users microservice development: mutation/query/pubsub scaffolding, test conventions, code review, and test engineering.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "general-skills",
+      "source": "./plugins/general-skills",
+      "description": "Project-agnostic Claude Code skills: explain-code with analogies and diagrams.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "browser-testing",
+      "source": "./plugins/browser-testing",
+      "description": "Playwright MCP configuration for browser-based testing and automation.",
+      "version": "1.0.0"
+    }
+  ]
+}

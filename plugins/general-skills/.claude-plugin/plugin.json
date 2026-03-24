@@ -1,0 +1,8 @@
+{
+  "name": "general-skills",
+  "description": "General-purpose Claude Code skills usable in any project.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Crehana Core Team"
+  }
+}
