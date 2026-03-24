@@ -29,6 +29,11 @@
       "skills": [
         "./skills/explain-code"
       ]
+    },
+    {
+      "name": "browser-testing",
+      "description": "Playwright MCP server for browser automation and end-to-end testing.",
+      "source": "./plugins/browser-testing"
     }
   ]
 }

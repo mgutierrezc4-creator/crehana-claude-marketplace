@@ -1,0 +1,7 @@
+{
+  "name": "browser-testing",
+  "description": "Playwright MCP server for browser automation and end-to-end testing. Enables Claude to navigate pages, click elements, fill forms, and take screenshots.",
+  "author": {
+    "name": "Crehana Core Team"
+  }
+}
